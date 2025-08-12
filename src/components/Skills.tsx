@@ -83,7 +83,7 @@ const Skills = () => {
                           </div>
                           <Progress
                             value={isVisible ? skill.level : 0}
-                            className="skill-progress h-2"
+                            className="skill-progress"
                           />
                         </div>
                       ))}
