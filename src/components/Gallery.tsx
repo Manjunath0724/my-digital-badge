@@ -116,55 +116,61 @@ const Gallery = () => {
 
         {/* Gallery Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((item) => (
-            <Card key={item.id} className="card-hover fade-in group overflow-hidden">
-              <div className="relative">
-                {/* Project Image/Icon */}
-                <div className="h-48 bg-gradient-primary flex items-center justify-center text-6xl">
-                  {item.image}
-                </div>
-                
-                {/* Achievement Badge */}
-                <div className="absolute top-4 right-4">
-                  <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm">
-                    {item.type}
-                  </Badge>
-                </div>
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Button variant="secondary" size="sm">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Details
-                  </Button>
-                </div>
-              </div>
-
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                  {item.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {item.technologies.map((tech) => (
-                    <Badge key={tech} variant="outline" className="text-xs">
-                      {tech}
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((item) => (
+              <Card key={item.id} className="card-hover fade-in group overflow-hidden">
+                <div className="relative">
+                  {/* Project Image/Icon */}
+                  <div className="h-48 bg-gradient-primary flex items-center justify-center text-6xl">
+                    {item.image}
+                  </div>
+                  
+                  {/* Achievement Badge */}
+                  <div className="absolute top-4 right-4">
+                    <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm">
+                      {item.type}
                     </Badge>
-                  ))}
-                </div>
+                  </div>
 
-                {/* Achievement */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-accent">
-                    <Trophy className="h-4 w-4 mr-1" />
-                    <span className="text-sm font-medium">{item.achievement}</span>
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Button variant="secondary" size="sm">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Details
+                    </Button>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                    {item.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {item.technologies.map((tech) => (
+                      <Badge key={tech} variant="outline" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {/* Achievement */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center text-accent">
+                      <Trophy className="h-4 w-4 mr-1" />
+                      <span className="text-sm font-medium">{item.achievement}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-muted-foreground">No items found for this category.</p>
+            </div>
+          )}
         </div>
 
         {/* Stats Summary */}
